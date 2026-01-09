@@ -1,63 +1,66 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-// Function to check if string s is a substring of string x
-bool check(string s, string x)
+bool check(string x, string s)
 {
-    // If x is smaller than s, s cannot be a substring of x
     if (x.size() < s.size())
     {
         return false;
     }
-    // Loop through x to find if s is a substring
-    for (int i = 0; i < x.size() - s.size() + 1; i++) // n - m + 1
+    else
     {
-        // Check if the substring of x starting at i with length of s is equal to s
-        if (x.substr(i, s.size()) == s) // m
+        for (int i = 0; i < x.size() - s.size() + 1; i++)
         {
-            return true; // s is a substring of x
+            if (x.substr(i, s.size()) == s)
+            {
+                return true;
+            }
         }
+        return false;
     }
-    return false; // s is not a substring of x
-} // O(n*m)
-
+}
 int main()
 {
-    int t; // Number of test cases
+    int t = 0;
     cin >> t;
     while (t--)
     {
-        long long n, m; // Lengths of strings x and s
+        int n = 0, m = 0;
         cin >> n >> m;
-        string x; // String x
+        string x = "";
         cin >> x;
-        string s; // String s
+        string s = "";
         cin >> s;
-        // inputs
-
-        // Create strings representing x after 0 to 5 operations
-        string x0 = x;       //  0 operations
-        string x1 = x0 + x0; // 1 operation
-        string x2 = x1 + x1; // 2 operations
-        string x3 = x2 + x2; // 3 operations
-        string x4 = x3 + x3; // 4 operations
-        string x5 = x4 + x4; // 5 operations
-
-        long long ans = -1; // Initialize answer as -1 (not possible)
-        // Check if s is a substring of x after 0 to 5 operations
-        if (check(s, x0))
-            ans = 0;
-        else if (check(s, x1))
-            ans = 1;
-        else if (check(s, x2))
-            ans = 2;
-        else if (check(s, x3))
-            ans = 3;
-        else if (check(s, x4))
-            ans = 4;
-        else if (check(s, x5))
-            ans = 5;
-        cout << ans << endl;
+        string x0 = x;
+        string x1 = x0 + x0;
+        string x2 = x1 + x1;
+        string x3 = x2 + x2;
+        string x4 = x3 + x3;
+        string x5 = x4 + x4;
+        int answer = -1;
+        if (check(x0, s))
+        {
+            answer = 0;
+        }
+        else if (check(x1, s))
+        {
+            answer = 1;
+        }
+        else if (check(x2, s))
+        {
+            answer = 2;
+        }
+        else if (check(x3, s))
+        {
+            answer = 3;
+        }
+        else if (check(x4, s))
+        {
+            answer = 4;
+        }
+        else if (check(x5, s))
+        {
+            answer = 5;
+        }
+        cout << answer << endl;
     }
-    return 0;
 }
