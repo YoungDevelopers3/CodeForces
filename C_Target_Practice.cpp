@@ -37,7 +37,7 @@ int main()
                     sum = sum + scores[i][j];
                 }
             }
-            cout << sum << endl;
+            cout << sum << '\n';
         }
     }
 }
