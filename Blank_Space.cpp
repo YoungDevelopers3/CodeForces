@@ -20,6 +20,7 @@ int main()
             }
             else
             {
+
                 len = 0;
             }
         }
